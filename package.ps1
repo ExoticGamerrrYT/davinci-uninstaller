@@ -1,18 +1,19 @@
 # Packages the already-built release exe into a portable zip.
 # Run AFTER `pnpm tauri build --no-bundle`.
 #
-# Produces:
+# Produces (version read from src-tauri/tauri.conf.json):
 #   deploy/
-#     DaVinci Resolve Uninstaller/          (exe + README.txt)
-#     DaVinci Resolve Uninstaller.zip       (that folder, zipped)
+#     DaVinci Resolve Uninstaller/                     (exe + README.txt)
+#     DaVinci-Resolve-Uninstaller-v<version>-win64.zip (that folder, zipped)
 
 $ErrorActionPreference = "Stop"
 
-$name  = "DaVinci Resolve Uninstaller"
-$root  = $PSScriptRoot
-$exe   = Join-Path $root "src-tauri\target\release\davinci-uninstaller.exe"
-$stage = Join-Path $root "deploy\$name"
-$zip   = Join-Path $root "deploy\$name.zip"
+$name    = "DaVinci Resolve Uninstaller"
+$root    = $PSScriptRoot
+$exe     = Join-Path $root "src-tauri\target\release\davinci-uninstaller.exe"
+$version = (Get-Content (Join-Path $root "src-tauri\tauri.conf.json") -Raw | ConvertFrom-Json).version
+$stage   = Join-Path $root "deploy\$name"
+$zip     = Join-Path $root "deploy\DaVinci-Resolve-Uninstaller-v$version-win64.zip"
 
 if (-not (Test-Path $exe)) {
     throw "Build not found: $exe`nRun 'pnpm tauri build --no-bundle' first."
