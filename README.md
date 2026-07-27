@@ -19,6 +19,10 @@ Start Menu entries and registry keys behind — enough to block a clean reinstal
 This tool finds and removes all of it. Your **projects and databases are kept by
 default**; deleting them is a separate, clearly-warned opt-in.
 
+<div align="center">
+  <img src="docs/scan.png" width="820" alt="The uninstaller listing every DaVinci Resolve trace found on the machine — install folder, config, caches, Start Menu entries, shortcuts and registry keys — each with its full path and a found/clean status.">
+</div>
+
 ## Features
 
 - **Read-only scan first** — see exactly what will be removed before anything is touched.
@@ -34,6 +38,10 @@ default**; deleting them is a separate, clearly-warned opt-in.
 2. Right-click **`DaVinci Resolve Uninstaller.exe`** → **Run as administrator** (required to delete system files and registry keys).
 3. Review the scan, tick *"Also delete my projects"* only if you want your projects gone, then click **Uninstall DaVinci Resolve**.
 4. A Windows restart is recommended afterwards to release any files that were locked.
+
+<div align="center">
+  <img src="docs/done.png" width="820" alt="The live log listing each step as it runs, followed by an 'Uninstall complete' panel reporting how many items were removed.">
+</div>
 
 ## What gets removed
 
@@ -54,6 +62,13 @@ default**; deleting them is a separate, clearly-warned opt-in.
 
 > [!WARNING]
 > Deleting projects is **irreversible**. Back up anything you care about first.
+
+Turning the projects switch on tints the whole card red, and the run still has to
+be confirmed before anything is touched:
+
+<div align="center">
+  <img src="docs/confirm.png" width="820" alt="The projects switch turned on, tinting its card red, with a confirmation panel below warning that Resolve and all projects will be deleted permanently.">
+</div>
 
 ## Build from source
 
