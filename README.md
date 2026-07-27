@@ -32,7 +32,7 @@ default**; deleting them is a separate, clearly-warned opt-in.
 
 1. Grab the latest **`DaVinci-Resolve-Uninstaller-*.zip`** from the [Releases page](https://github.com/ExoticGamerrrYT/davinci-uninstaller/releases/latest) and extract it.
 2. Right-click **`DaVinci Resolve Uninstaller.exe`** → **Run as administrator** (required to delete system files and registry keys).
-3. Review the scan, tick *"Also delete projects"* only if you want your projects gone, then click **Uninstall DaVinci Resolve**.
+3. Review the scan, tick *"Also delete my projects"* only if you want your projects gone, then click **Uninstall DaVinci Resolve**.
 4. A Windows restart is recommended afterwards to release any files that were locked.
 
 ## What gets removed
@@ -49,7 +49,7 @@ default**; deleting them is a separate, clearly-warned opt-in.
 
 - The **scan never deletes** — removal happens only after you confirm.
 - Every deletion passes an allowlist: only paths under Blackmagic / PostgreSQL, or Resolve `.lnk` shortcuts, and never a shallow system path.
-- With *"Also delete projects"* **off**, the `Resolve Disk Database` subtrees are preserved even though they live inside the app folders.
+- With *"Also delete my projects"* **off**, the `Resolve Disk Database` subtrees are preserved even though they live inside the app folders.
 - Only the Windows system drive is touched — config, registry and databases always live there.
 
 > [!WARNING]

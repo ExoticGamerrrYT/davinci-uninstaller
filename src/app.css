@@ -1,11 +1,121 @@
 @import "tailwindcss";
 
+/* Design tokens. Everything here becomes a utility: --color-amber -> bg-amber,
+   --radius-panel -> rounded-panel, --animate-sweep -> animate-sweep. */
+@theme {
+  /* matte graphite — warmed slightly so it doesn't read as pure black */
+  --color-bg: #101114;
+  --color-surface: #17191d;
+  --color-surface-2: #1d2026;
+  --color-surface-3: #24282f;
+  --color-console: #0b0c0e;
+
+  --color-line: #262a31;
+  --color-line-soft: #1f232a;
+  --color-line-hi: #333941;
+
+  --color-ink: #e9ebee;
+  --color-muted: #979da7;
+  --color-dim: #616872;
+  --color-faint: #3d434b;
+
+  --color-amber: #f0a341;
+  --color-danger: #ef4a4f;
+  --color-danger-lift: #f45f63;
+  --color-danger-soft: #ff8b8e;
+  --color-good: #3ecf8e;
+
+  /* accent washes, pre-mixed over --color-surface */
+  --color-amber-wash: #262320;
+  --color-danger-wash: #281d21;
+  --color-good-wash: #1a2625;
+
+  --font-ui: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Cascadia Mono", "Cascadia Code", Consolas, ui-monospace, monospace;
+
+  --text-title: 19px;
+  --text-title--letter-spacing: -0.015em;
+  --text-title--font-weight: 600;
+  --text-row: 12.5px;
+  --text-path: 11.5px;
+  --text-eyebrow: 10px;
+  --text-eyebrow--letter-spacing: 0.18em;
+  --text-tag: 10px;
+  --text-tag--letter-spacing: 0.08em;
+
+  --radius-panel: 14px;
+  --radius-ctl: 10px;
+
+  --shadow-glow-amber: 0 0 10px #f0a34199;
+  --shadow-glow-danger: 0 0 10px #ef4a4f99;
+  --shadow-sweep: 0 0 22px 5px #f0a3414d;
+  --inset-shadow-lip: inset 0 1px 0 #ffffff2e;
+
+  --animate-sweep: sweep 1.1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  --animate-blink: blink 1s steps(2) infinite;
+
+  @keyframes sweep {
+    from { left: 0; opacity: 0; }
+    15%, 85% { opacity: 1; }
+    to { left: 100%; opacity: 0; }
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+}
+
 @layer base {
   html {
-    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    /* dark by default, so anything the browser paints itself matches */
+    color-scheme: dark;
+    background-color: var(--color-bg);
+    font-family: var(--font-ui);
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: var(--color-ink);
+  }
+
+  body {
+    /* faint top-left light source — keeps the flat dark from looking dead */
+    background:
+      radial-gradient(120% 80% at 12% -10%, var(--color-surface-2) 0%, transparent 60%),
+      var(--color-bg);
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: --alpha(var(--color-amber) / 35%);
+  }
+
+  /* hairline scrollbars everywhere — 6px of grab area, a 4px pill visible */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-hi);
+    background-clip: content-box;
+    border: 1px solid transparent;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-dim);
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
