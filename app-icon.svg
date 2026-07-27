@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Source of truth for every app icon. Regenerate with:  pnpm tauri icon app-icon.svg
+       Same mark as the header in src/routes/+page.svelte: an aperture crossed by
+       the amber playhead. Strokes are thickened slightly vs. the 24px header
+       version so the glyph survives the 16px taskbar size. -->
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d2026"/>
+      <stop offset="1" stop-color="#17191d"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="40" y="40" width="944" height="944" rx="216" fill="url(#tile)" stroke="#2e343c" stroke-width="6"/>
+
+  <g fill="none" stroke-width="48">
+    <circle cx="512" cy="512" r="255" stroke="#979da7" stroke-opacity="0.62"/>
+    <circle cx="512" cy="512" r="96" stroke="#c2c8cf"/>
+    <path d="M512 197V827" stroke="#f0a341" stroke-linecap="round"/>
+  </g>
+</svg>
